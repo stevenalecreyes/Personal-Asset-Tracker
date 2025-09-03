@@ -1,5 +1,6 @@
 import express from "express";
 import { Request, Response } from "express";
+import assetRoutes from "./routes/assets";
 
 const app = express();
 const PORT = 3000;
@@ -7,11 +8,7 @@ const PORT = 3000;
 // Middleware
 app.use(express.json());
 
-
-// Test route
-app.get("/", (req: Request, res: Response) => {
-  res.send("Personal Asset Tracker API is running 🚀");
-});
+app.use("/assets", assetRoutes);
 
 // Start server
 app.listen(PORT, () => {
