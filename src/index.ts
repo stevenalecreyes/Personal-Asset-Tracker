@@ -1,5 +1,5 @@
 import express from "express";
-import type { Request, Response } from "express";
+import { Request, Response } from "express";
 
 const app = express();
 const PORT = 3000;
