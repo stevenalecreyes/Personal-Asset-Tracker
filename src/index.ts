@@ -1,11 +1,13 @@
 import express from "express";
+import cors from "cors";
 import { connectDB } from "./config/db";
 import assetsRouter from "./routes/assets";
 
 const app = express();
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 
 // Routes
