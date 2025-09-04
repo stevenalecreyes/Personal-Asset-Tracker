@@ -1,16 +1,19 @@
 import express from "express";
-import { Request, Response } from "express";
-import assetRoutes from "./routes/assets";
+import { connectDB } from "./config/db";
+import assetsRouter from "./routes/assets";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT
 
 // Middleware
 app.use(express.json());
 
-app.use("/assets", assetRoutes);
+// Routes
+app.use("/assets", assetsRouter);
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+// Start server after DB connects
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running at http://localhost:${PORT}`);
+  });
 });
